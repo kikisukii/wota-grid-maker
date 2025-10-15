@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 元素获取部分 (无改动) ---
+    // --- 元素获取 ---
     const gridContainer = document.getElementById('grid-container');
     const modal = document.getElementById('modal');
     const closeBtn = document.querySelector('.close-btn');
@@ -11,14 +11,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const creditFooterForImage = document.getElementById('credit-footer-for-image');
     const mainTitle = document.querySelector('#capture-area h1');
 
+    // --- 安全检查 ---
     if (!gridContainer || !modal || !exportBtn || !captureArea || !creditFooterForImage || !mainTitle) {
         console.error('错误：页面缺少必要的HTML元素！');
+        alert('页面加载失败，请刷新重试！');
         return;
     }
 
+    // --- 状态变量 ---
     let currentCell = null;
     let cropper = null;
 
+    // --- 函数定义 ---
     function loadImagesFromStorage() {
         const savedImages = JSON.parse(localStorage.getItem('wotaGridData'));
         if (savedImages && Array.isArray(savedImages)) {
@@ -31,41 +35,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- START: 这里是唯一的修改点 ---
+    function saveImageToStorage(imageDataUrl, cell) {
+        const allCells = Array.from(document.querySelectorAll('.grid-cell'));
+        const cellIndex = allCells.indexOf(cell);
+        if (cellIndex === -1) return;
+
+        let savedImages = JSON.parse(localStorage.getItem('wotaGridData')) || new Array(12).fill(null);
+        savedImages[cellIndex] = imageDataUrl;
+        localStorage.setItem('wotaGridData', JSON.stringify(savedImages));
+    }
+    
+    function openModalForCell(cell) {
+        currentCell = cell;
+        if (cropper) {
+            cropper.destroy();
+            cropper = null;
+        }
+        imageToCrop.src = '';
+        imageInput.value = '';
+        modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+
+    // --- 事件绑定 ---
     gridContainer.addEventListener('click', (e) => {
         const cell = e.target.closest('.grid-cell');
         if (cell) {
-            currentCell = cell;
-
-            // 每次打开弹窗前，都执行一次彻底的“清理”
-            // 1. 销毁任何可能存在的旧裁剪器实例
-            if (cropper) {
-                cropper.destroy();
-                cropper = null;
-            }
-            // 2. 清空上次的图片预览SRC，让图片框变回空白
-            imageToCrop.src = '';
-            // 3. 重置文件选择框，这样可以重复上传同一张图片
-            imageInput.value = '';
-
-            // 清理完毕后，再显示弹窗
-            modal.style.display = 'flex';
+            openModalForCell(cell);
         }
     });
-    // --- END: 修改结束 ---
 
-
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-        if (cropper) { cropper.destroy(); cropper = null; }
-    });
+    closeBtn.addEventListener('click', closeModal);
 
     imageInput.addEventListener('change', (e) => {
         if (e.target.files && e.target.files.length > 0) {
             const reader = new FileReader();
             reader.onload = (event) => {
-                imageToCrop.src = event.target.result;
                 if (cropper) { cropper.destroy(); }
+                imageToCrop.src = event.target.result;
                 cropper = new Cropper(imageToCrop, {
                     aspectRatio: 1, viewMode: 1, background: false,
                 });
@@ -75,44 +85,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     cropBtn.addEventListener('click', () => {
-        if (cropper && currentCell) {
-            const canvas = cropper.getCroppedCanvas({
-                width: 500,
-                height: 500,
-                imageSmoothingQuality: 'high',
-            });
-            const imageDataUrl = canvas.toDataURL();
-            const imageElement = currentCell.querySelector('.cell-image');
-            
-            if (imageElement) {
-                imageElement.src = imageDataUrl;
+        if (!cropper || !currentCell) return;
 
-                function saveImageToStorage() {
-                    const allCells = Array.from(document.querySelectorAll('.grid-cell'));
-                    const cellIndex = allCells.indexOf(currentCell);
-                    let savedImages = JSON.parse(localStorage.getItem('wotaGridData')) || new Array(12).fill(null);
-                    savedImages[cellIndex] = imageDataUrl;
-                    localStorage.setItem('wotaGridData', JSON.stringify(savedImages));
-                }
-                saveImageToStorage();
-            }
-
-            modal.style.display = 'none';
-            if (cropper) { cropper.destroy(); cropper = null; }
+        const canvas = cropper.getCroppedCanvas({
+            width: 500, height: 500, imageSmoothingQuality: 'high',
+        });
+        const imageDataUrl = canvas.toDataURL();
+        const imageElement = currentCell.querySelector('.cell-image');
+        
+        if (imageElement) {
+            imageElement.src = imageDataUrl;
+            saveImageToStorage(imageDataUrl, currentCell);
         }
+        closeModal();
     });
 
     exportBtn.addEventListener('click', () => {
-        mainTitle.classList.add('for-canvas');
-        creditFooterForImage.style.display = 'block';
         exportBtn.style.display = 'none';
+        creditFooterForImage.style.display = 'block';
+        mainTitle.classList.add('for-canvas');
         
         const scale = window.devicePixelRatio > 2 ? window.devicePixelRatio : 3;
 
         html2canvas(captureArea, {
-            backgroundColor: '#ffffff',
-            useCORS: true,
-            scale: scale,
+            backgroundColor: '#ffffff', useCORS: true, scale: scale,
         }).then(canvas => {
             const link = document.createElement('a');
             link.download = 'my-wota-life-final.png';
@@ -121,11 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch(err => {
             console.error('生成图片失败:', err);
         }).finally(() => {
-            mainTitle.classList.remove('for-canvas');
-            creditFooterForImage.style.display = 'none';
             exportBtn.style.display = 'block';
+            creditFooterForImage.style.display = 'none';
+            mainTitle.classList.remove('for-canvas');
         });
     });
 
+    // --- 初始加载 ---
     loadImagesFromStorage();
 });
