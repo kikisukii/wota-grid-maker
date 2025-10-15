@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- 元素获取部分 (无改动) ---
     const gridContainer = document.getElementById('grid-container');
     const modal = document.getElementById('modal');
     const closeBtn = document.querySelector('.close-btn');
@@ -8,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const exportBtn = document.getElementById('export-btn');
     const captureArea = document.getElementById('capture-area');
     const creditFooterForImage = document.getElementById('credit-footer-for-image');
-    // 新增：获取 h1 标题元素
     const mainTitle = document.querySelector('#capture-area h1');
 
     if (!gridContainer || !modal || !exportBtn || !captureArea || !creditFooterForImage || !mainTitle) {
@@ -19,6 +19,27 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentCell = null;
     let cropper = null;
 
+    // --- START: 新增功能 ---
+    // 函数：从 localStorage 加载并显示已保存的图片
+    function loadImagesFromStorage() {
+        // 1. 从“记事本”中读取名为 'wotaGridData' 的记录
+        const savedImages = JSON.parse(localStorage.getItem('wotaGridData'));
+
+        // 2. 如果记录存在
+        if (savedImages && Array.isArray(savedImages)) {
+            const allImageElements = document.querySelectorAll('.cell-image');
+            // 3. 遍历记录，并将图片数据显示到对应的格子里
+            savedImages.forEach((dataUrl, index) => {
+                if (dataUrl && allImageElements[index]) {
+                    allImageElements[index].src = dataUrl;
+                }
+            });
+        }
+    }
+    // --- END: 新增功能 ---
+
+
+    // --- 事件监听器部分 ---
     gridContainer.addEventListener('click', (e) => {
         const cell = e.target.closest('.grid-cell');
         if (cell) {
@@ -59,20 +80,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 height: 500,
                 imageSmoothingQuality: 'high',
             });
+            const imageDataUrl = canvas.toDataURL(); // 获取图片数据
             const imageElement = currentCell.querySelector('.cell-image');
+            
             if (imageElement) {
-                imageElement.src = canvas.toDataURL();
+                imageElement.src = imageDataUrl; // 显示图片
+
+                // --- START: 新增功能 ---
+                // 函数：将新图片保存到 localStorage
+                function saveImageToStorage() {
+                    // 1. 获取所有格子，并找到当前修改的是第几个
+                    const allCells = Array.from(document.querySelectorAll('.grid-cell'));
+                    const cellIndex = allCells.indexOf(currentCell);
+
+                    // 2. 从“记事本”中读取旧的记录，如果不存在则创建一个新记录
+                    let savedImages = JSON.parse(localStorage.getItem('wotaGridData')) || new Array(12).fill(null);
+                    
+                    // 3. 更新对应位置的图片数据
+                    savedImages[cellIndex] = imageDataUrl;
+
+                    // 4. 将更新后的完整记录写回“记事本”
+                    localStorage.setItem('wotaGridData', JSON.stringify(savedImages));
+                }
+                saveImageToStorage(); // 执行保存
+                // --- END: 新增功能 ---
             }
+
             modal.style.display = 'none';
             if (cropper) { cropper.destroy(); cropper = null; }
         }
     });
 
-    // 【最终版核心修改】
     exportBtn.addEventListener('click', () => {
-        // 1. 在截图前，为标题“穿上”加大版样式
         mainTitle.classList.add('for-canvas');
-        
         creditFooterForImage.style.display = 'block';
         exportBtn.style.display = 'none';
         
@@ -90,10 +130,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch(err => {
             console.error('生成图片失败:', err);
         }).finally(() => {
-            // 3. 无论成功或失败，截图后都恢复原样
-            mainTitle.classList.remove('for-canvas'); // 为标题“脱下”加大版样式
+            mainTitle.classList.remove('for-canvas');
             creditFooterForImage.style.display = 'none';
             exportBtn.style.display = 'block';
         });
     });
+
+    // --- 在网页加载完成后，立即执行一次“读取”功能 ---
+    loadImagesFromStorage();
 });
