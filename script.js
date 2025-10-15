@@ -7,10 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const cropBtn = document.getElementById('crop-btn');
     const exportBtn = document.getElementById('export-btn');
     const captureArea = document.getElementById('capture-area');
-    // 新增：获取只在图片中显示的署名栏
     const creditFooterForImage = document.getElementById('credit-footer-for-image');
+    // 新增：获取 h1 标题元素
+    const mainTitle = document.querySelector('#capture-area h1');
 
-    if (!gridContainer || !modal || !exportBtn || !captureArea || !creditFooterForImage) {
+    if (!gridContainer || !modal || !exportBtn || !captureArea || !creditFooterForImage || !mainTitle) {
         console.error('错误：页面缺少必要的HTML元素！');
         return;
     }
@@ -67,9 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 【核心修改】
+    // 【最终版核心修改】
     exportBtn.addEventListener('click', () => {
-        // 1. 在截图前，暂时显示图片署名栏
+        // 1. 在截图前，为标题“穿上”加大版样式
+        mainTitle.classList.add('for-canvas');
+        
         creditFooterForImage.style.display = 'block';
         exportBtn.style.display = 'none';
         
@@ -87,7 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch(err => {
             console.error('生成图片失败:', err);
         }).finally(() => {
-            // 3. 无论成功或失败，截图后都把署名栏和按钮恢复原样
+            // 3. 无论成功或失败，截图后都恢复原样
+            mainTitle.classList.remove('for-canvas'); // 为标题“脱下”加大版样式
             creditFooterForImage.style.display = 'none';
             exportBtn.style.display = 'block';
         });

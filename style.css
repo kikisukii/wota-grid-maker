@@ -18,20 +18,23 @@ body {
     border-radius: 8px;
 }
 
-/* START: 修改标题样式，并增加隔离块样式 */
 h1 {
     margin-top: 0;
-    margin-bottom: 0; /* 标题自身不再负责和下方元素的间距 */
-    font-size: 26px; /* 恢复您最初喜欢的字号 */
+    margin-bottom: 0;
+    font-size: 26px; /* 这是网页上显示的正常大小 */
     color: #333;
 }
 
-/* 这个是新增的隔离块的样式 */
-.canvas-spacer {
-    height: 25px; /* 用这个块的高度来强制定义标题和表格的间距 */
+/* START: 这里是为生成图片准备的“加大版”标题样式 */
+h1.for-canvas {
+    font-size: 32px; /* 只在生成图片时，字号会临时变成 32px */
 }
-/* END: 修改结束 */
+/* END: 新增样式结束 */
 
+
+.canvas-spacer {
+    height: 25px;
+}
 
 .grid {
     display: grid;
