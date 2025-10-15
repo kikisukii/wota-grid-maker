@@ -2,7 +2,9 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     display: flex;
     flex-direction: column;
-    align: center;
+    /* START: 这里是唯一的、但最关键的修正 */
+    align-items: center; /* 将错误的 `align` 修正为 `align-items` */
+    /* END: 修正结束 */
     background-color: #f0f0f0;
     margin: 0;
     padding: 20px 0;
@@ -18,21 +20,13 @@ body {
     border-radius: 8px;
 }
 
-
-/* START: 这是本次唯一的、但最关键的修改 */
 h1 {
-    /* 1. 重置所有外边距，消除浏览器默认样式的影响 */
     margin: 0; 
-    /* 2. 用内边距精确控制标题和下方表格的距离 */
     padding-bottom: 25px; 
-    /* 3. 明确指定行高，避免不同字体渲染时高度不一 */
     line-height: 1.3; 
-    
     font-size: 24px;
     color: #333;
 }
-/* END: 修改结束 */
-
 
 .grid {
     display: grid;
@@ -106,19 +100,4 @@ h1 {
     color: #555;
     font-weight: bold;
     text-decoration: none;
-    transition: text-decoration 0.2s ease;
-}
-.page-footer a:hover {
-    text-decoration: underline;
-}
-
-.credit-footer {
-    width: 100%;
-    margin-top: 15px;
-    padding-top: 15px;
-    font-size: 13px;
-    color: #999;
-    text-align: center;
-    border-top: 1px solid #eee;
-    display: none;
-}
+    transition: text-decoration 0.2s
