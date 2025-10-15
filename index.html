@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日系女偶像wota生涯表</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div id="capture-area">
+        <h1>日系女偶像wota生涯表</h1>
+        <div id="grid-container" class="grid">
+            <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">第一个推的</div></div>
+            <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">现在推的</div></div>
+            <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">第一个认识的</div></div>
+            <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">推的时间最久的</div></div>
+            <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">花过钱最多的</div></div>
+            <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">一见钟情的</div></div>
+            <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">“喜欢她真好啊”</div></div>
+            <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">对你影响最大的</div></div>
+            <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">最喜欢的CP</div></div>
+            <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">最意难平的</div></div>
+            <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">爱过</div></div>
+            <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">最喜欢的团体</div></div>
+        </div>
+    </div>
+
+    <button id="export-btn">生成图片</button>
+
+    <footer class="page-footer">
+        <p><strong>致谢</strong><br>
+            模板创意源自网络流传的同类表格，感谢原作者。如需署名请联系。<br>
+            网页部署 哔哩哔哩干杯<span class="creator-name">@Kichannahcik</span> (走过路过请大家都来入坑我们Hello! Project!)<br>
+            代码协助: Google Gemini | 部署平台: GitHub Pages
+            </p>
+        <p><strong>免责声明</strong><br>
+            1. 本网站为非商业性个人项目，仅供娱乐和同好交流，请勿用于任何商业用途。<br>
+            2. 所有图片内容均由用户自行上传，用户需对所上传和制作的内容承担全部法律责任。本站及开发者不承担任何因用户行为产生的责任。<br>
+            3. 严禁使用本网站制作、分享或传播任何侵犯版权、肖像权、隐私权或包含色情、暴力等违反相关法律法规的内容。
+        </p>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>上传并裁剪图片</h2>
+            <input type="file" id="image-input" accept="image/*">
+            <div class="cropper-container"><img id="image-to-crop"></div>
+            <button id="crop-btn">确认裁剪</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
