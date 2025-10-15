@@ -18,12 +18,16 @@ body {
     border-radius: 8px;
 }
 
+/* START: 这里是主要修改点 */
 h1 {
     margin-top: 0;
-    margin-bottom: 25px;
-    font-size: 26px;
+    margin-bottom: 20px; /* 将底部间距从25px减少到20px */
+    font-size: 24px; /* 将字号从26px微调到24px，这是解决问题的关键 */
     color: #333;
+    padding-bottom: 5px; /* 增加一点内边距，确保文字和下方元素的呼吸空间 */
 }
+/* END: 修改结束 */
+
 
 .grid {
     display: grid;
@@ -39,10 +43,7 @@ h1 {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    /* transition: transform 0.2s ease; */ /* 已移除，防止覆盖问题 */
 }
-
-/* 已移除 .grid-cell:hover 规则，防止覆盖问题 */
 
 .image-container {
     flex-grow: 1;
@@ -96,14 +97,12 @@ h1 {
 }
 .page-footer p { margin: 10px 0; }
 
-/* 最终恢复为可点击的 a 标签样式 */
 .page-footer a {
     color: #555;
     font-weight: bold;
     text-decoration: none;
     transition: text-decoration 0.2s ease;
 }
-
 .page-footer a:hover {
     text-decoration: underline;
 }
@@ -116,5 +115,5 @@ h1 {
     color: #999;
     text-align: center;
     border-top: 1px solid #eee;
-    display: none; /* 默认在网页上隐藏 */
+    display: none;
 }
