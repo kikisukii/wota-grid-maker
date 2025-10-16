@@ -93,13 +93,15 @@ h1.for-canvas {
     gap: 15px;
 }
 
+/* START: 这里是主要的修改点 */
 .modal-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* 将标题和关闭按钮推向两端 */
+    align-items: center; /* 垂直居中对齐 */
     width: 100%;
 }
 
+/* 重置弹窗标题的边距 */
 .modal-content h2 {
     margin: 0;
     font-size: 18px;
@@ -107,15 +109,18 @@ h1.for-canvas {
 }
 
 .close-btn {
+    /* float: right; */ /* 移除 float 布局 */
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
     color: #888;
-    line-height: 1;
-    padding: 5px;
-    margin: -5px;
+    line-height: 1; /* 确保垂直对齐精确 */
+    padding: 5px; /* 增加点击区域 */
+    margin: -5px; /* 抵消padding带来的额外空间 */
 }
 .close-btn:hover { color: #000; }
+/* END: 修改结束 */
+
 
 .cropper-container {
     width: 100%;
@@ -128,25 +133,6 @@ h1.for-canvas {
 
 #image-to-crop[src=""] {
     visibility: hidden;
-}
-
-/* START: 这里是主要的修改点 */
-/* 新增“使用上次图片”按钮的样式 */
-#use-last-image-btn {
-    padding: 8px 15px;
-    font-size: 13px;
-    cursor: pointer;
-    border: 1px solid #007bff;
-    background-color: #fff;
-    color: #007bff;
-    border-radius: 5px;
-    transition: all 0.2s ease;
-    width: fit-content; /* 宽度自适应内容 */
-    align-self: flex-start; /* 靠左对齐 */
-}
-#use-last-image-btn:hover {
-    background-color: #007bff;
-    color: #fff;
 }
 
 #crop-btn {
@@ -163,7 +149,6 @@ h1.for-canvas {
 #crop-btn:hover {
     background-color: #218838;
 }
-/* END: 修改结束 */
 
 #export-btn { margin-top: 25px; padding: 12px 30px; font-size: 16px; cursor: pointer; border: none; background-color: #007bff; color: white; border-radius: 5px; transition: background-color 0.2s ease; }
 #export-btn:hover { background-color: #0056b3; }
