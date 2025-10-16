@@ -1,12 +1,24 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+/* START: 这里是主要的修改点 */
+/* 新增页面包裹容器的样式 */
+.page-wrapper {
+    width: 100%;
+    /* 关键属性：当内容超出宽度时，自动显示水平滚动条 */
+    overflow-x: auto; 
+    
+    /* 将原本 body 的居中布局样式移到这里 */
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f0f0f0;
-    margin: 0;
     padding: 20px 0;
 }
+/* END: 修改结束 */
+
 
 #capture-area {
     display: flex;

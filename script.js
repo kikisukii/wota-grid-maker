@@ -120,11 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const canvas = cropper.getCroppedCanvas({
             width: 500, height: 500, imageSmoothingQuality: 'high',
         });
-        
-        // START: 这里是唯一的修改点
-        // 将图片转换为高质量的JPEG格式，大大减小体积
-        const imageDataUrl = canvas.toDataURL('image/jpeg', 0.85); 
-        // END: 修改结束
+        const imageDataUrl = canvas.toDataURL('image/jpeg', 0.85);
         
         const imageElement = currentCell.querySelector('.cell-image');
         
