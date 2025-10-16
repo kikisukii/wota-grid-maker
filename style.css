@@ -1,23 +1,25 @@
+/* START: 核心修正区域 */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-}
-
-/* START: 这里是主要的修改点 */
-/* 新增页面包裹容器的样式 */
-.page-wrapper {
-    width: 100%;
-    /* 关键属性：当内容超出宽度时，自动显示水平滚动条 */
-    overflow-x: auto; 
-    
-    /* 将原本 body 的居中布局样式移到这里 */
+    /* 恢复为之前能完美居中桌面的布局方式 */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
+    align-items: center; 
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px; /* 在上下左右都增加一些边距 */
+    box-sizing: border-box;
 }
-/* END: 修改结束 */
+
+/* 之前用于滚动的 page-wrapper 不再需要，我们使用更精确的方式 */
+/* 新增：只包裹内容的滚动容器 */
+.content-scroll-wrapper {
+    /* 这个容器的唯一作用就是：当内容太宽时，提供滚动条 */
+    overflow-x: auto;
+    /* 在窄屏幕上，容器宽度不要超过屏幕 */
+    max-width: 100%;
+}
+/* END: 核心修正区域 */
 
 
 #capture-area {
@@ -28,6 +30,8 @@ body {
     padding: 30px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     border-radius: 8px;
+    /* 让 #capture-area 的宽度由其内容决定，而不是被拉伸 */
+    width: fit-content;
 }
 
 h1 {
