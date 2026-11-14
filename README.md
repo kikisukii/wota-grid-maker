@@ -47,7 +47,9 @@
 
 本地开发时，用静态HTTP服务器提供仓库根目录，再打开`/wota-grid-maker/`或`/wota-grid-maker-jp/`。由于页面使用外部依赖，需要联网加载。
 
-GitHub Pages从`main`分支的根目录发布。保留`kikisukii.github.io`仓库名和两个语言目录名，即可继续使用原来的两个网址。两版提交历史已合并；合并前的`main`和`assets`分支也保留为`archive/*`标签，便于查阅。
+代码统一在本仓库的`main`分支维护。[发布仓库](https://github.com/kikisukii/kikisukii.github.io)通过GitHub Actions读取本仓库并发布到GitHub Pages，两个原网址保持不变。发布流程可手动运行，也会约每30分钟检查一次代码更新；GitHub调度可能延迟，长期无活动时可能暂停，届时可手动重新启用。
+
+两版提交历史已合并；合并前的`main`和`assets`分支也保留为`archive/*`标签，便于查阅。
 
 ## 使用约定
 
@@ -56,6 +58,6 @@ GitHub Pages从`main`分支的根目录发布。保留`kikisukii.github.io`仓�
 ## 致谢
 
 - 模板创意源自网络流传的《日系女偶像WOTA生涯表》，感谢原作者。如需署名，请联系。
-- 制作：[Kichannahcik](https://space.bilibili.com/1819981/video) / [キキ](https://x.com/Kikidaisuki_)。欢迎大家关注Hello! Project和铃木爱理！
+- 制作：[Kichannahcik](https://space.bilibili.com/1819981/video) / キキ。欢迎大家关注Hello! Project和铃木爱理！
 - 初版代码协助：Google Gemini。
 - 部署平台：GitHub Pages。

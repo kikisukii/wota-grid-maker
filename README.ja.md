@@ -47,7 +47,9 @@ HTML・CSS・JavaScriptで構成された静的サイトです。ビルドやAPI
 
 ローカルでは、リポジトリのルートを静的HTTPサーバーで配信し、`/wota-grid-maker/`または`/wota-grid-maker-jp/`を開いてください。外部ライブラリを読み込むため、インターネット接続が必要です。
 
-GitHub Pagesは`main`ブランチのルートから公開します。`kikisukii.github.io`というリポジトリ名と2つのディレクトリ名を維持することで、従来のURLをそのまま使えます。両バージョンのコミット履歴を統合し、統合前の`main`・`assets`ブランチは`archive/*`タグでも参照できます。
+コードはこのリポジトリの`main`ブランチで管理します。[公開用リポジトリ](https://github.com/kikisukii/kikisukii.github.io)のGitHub Actionsがコードを取得してGitHub Pagesへ公開するため、従来の2つのURLをそのまま使えます。手動実行のほか、約30分ごとに更新を確認します。GitHubのスケジュール実行には遅延が生じる場合があり、長期間更新がないと停止することもあります。その場合は手動で再開できます。
+
+両バージョンのコミット履歴を統合し、統合前の`main`・`assets`ブランチは`archive/*`タグでも参照できます。
 
 ## 利用について
 
@@ -56,6 +58,6 @@ GitHub Pagesは`main`ブランチのルートから公開します。`kikisukii.
 ## 謝辞
 
 - テンプレートのアイデアは、SNSで流行した同様のテンプレートを参考にしています。素敵なアイデアをありがとうございます。
-- 制作：[キキ](https://x.com/Kikidaisuki_) / [Kichannahcik](https://space.bilibili.com/1819981/video)。ハロプロと鈴木愛理の魅力が、もっと多くの人に伝わりますように！
+- 制作：キキ / [Kichannahcik](https://space.bilibili.com/1819981/video)。ハロプロと鈴木愛理の魅力が、もっと多くの人に伝わりますように！
 - 初期コードの制作協力：Google Gemini。
 - ホスティング：GitHub Pages。
