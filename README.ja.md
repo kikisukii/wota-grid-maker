@@ -58,6 +58,6 @@ HTML・CSS・JavaScriptで構成された静的サイトです。ビルドやAPI
 ## 謝辞
 
 - テンプレートのアイデアは、SNSで流行した同様のテンプレートを参考にしています。素敵なアイデアをありがとうございます。
-- 制作：キキ / [Kichannahcik](https://space.bilibili.com/1819981/video)。ハロプロと鈴木愛理の魅力が、もっと多くの人に伝わりますように！
+- 制作：キキ / Kichannahcik。ハロプロと鈴木愛理の魅力が、もっと多くの人に伝わりますように！
 - 初期コードの制作協力：Google Gemini。
 - ホスティング：GitHub Pages。
