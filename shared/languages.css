@@ -1,0 +1,3 @@
+.language-nav { display:flex; justify-content:center; flex-wrap:wrap; gap:16px; padding:12px; font:14px system-ui,sans-serif; }
+.language-nav a { color:#555; text-underline-offset:3px; }
+.language-nav a[aria-current="page"] { color:#222; font-weight:700; }

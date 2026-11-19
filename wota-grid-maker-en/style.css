@@ -1,0 +1,6 @@
+@import url('../wota-grid-maker/style.css');
+
+/* Give English labels room to wrap without changing the existing language layouts. */
+.grid { grid-template-columns: repeat(4, 175px); grid-template-rows: repeat(3, 220px); }
+.image-container { height: 175px; flex-grow: 0; }
+.text-container { height: 45px; white-space: normal; line-height: 1.25; box-sizing: border-box; }

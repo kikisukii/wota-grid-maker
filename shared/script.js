@@ -9,6 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
             "downloadName": "my-wota-life-final.png",
             "exportError": "生成图片失败:"
         },
+        "en": {
+            "loadError": "The page could not load correctly. Please refresh and try again.",
+            "storageFull": "Browser storage is full. Removing older saved images...",
+            "saveError": "This image is too large to save in your browser.",
+            "clearConfirm": "Clear all saved images? This cannot be undone.",
+            "downloadName": "my-idol-fan-journey.png",
+            "exportError": "Could not create the image:"
+        },
         "ja": {
             "loadError": "ページが正しく読み込めませんでした。リフレッシュしてください。",
             "storageFull": "ストレージが満杯です。古いデータを削除しようとします...",

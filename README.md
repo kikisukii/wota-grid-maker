@@ -1,10 +1,10 @@
 # Wota Grid Maker — 日系WOTA生涯表
 
-**中文** | [日本語](README.ja.md)
+**中文** | [日本語](README.ja.md) | [English](README.en.md)
 
-把喜欢的偶像图片放进12个格子，制作属于自己的「日系WOTA生涯表」。中文版和日文版在这个仓库中统一维护。
+把喜欢的偶像图片放进12个格子，制作属于自己的「日系WOTA生涯表」。中文、日文和英文版在这个仓库中统一维护。
 
-**在线使用：[中文版](https://kikisukii.github.io/wota-grid-maker/) · [日本語版](https://kikisukii.github.io/wota-grid-maker-jp/)**
+**在线使用：[中文版](https://kikisukii.github.io/wota-grid-maker/) · [日本語版](https://kikisukii.github.io/wota-grid-maker-jp/) · [English](https://kikisukii.github.io/wota-grid-maker-en/)**
 
 ## 主要功能
 
@@ -32,7 +32,7 @@
 
 图片保存在当前设备、当前浏览器的本地存储中。清除浏览器数据、使用隐私模式或达到存储容量限制，都可能导致图片无法保留。需要长期保存的作品，请导出为PNG。
 
-延续原有行为，中文版和日文版共用同一份本地存档。在其中一版修改或清空图片后，下次打开另一版时也会反映这些变化。
+延续原有行为，中文、日文和英文版共用同一份本地存档。在其中一版修改或清空图片后，下次打开其他语言版时也会反映这些变化。
 
 ## 开发与部署
 
@@ -40,9 +40,10 @@
 
 - `wota-grid-maker/`：中文版HTML与CSS。
 - `wota-grid-maker-jp/`：日文版HTML与CSS。
-- `shared/script.js`：共用功能及中日文提示。
+- `wota-grid-maker-en/`：英文版HTML与CSS。
+- `shared/script.js`：共用功能及中日英三语提示。
 - `assets/`：两个版本的制作示例。
-- `README.md` / `README.ja.md`：中文 / 日文说明。
+- `README.md` / `README.ja.md` / `README.en.md`：中文 / 日文 / 英文说明。
 - 根目录`index.html`：语言选择页。
 
 本地开发时，用静态HTTP服务器提供仓库根目录，再打开`/wota-grid-maker/`或`/wota-grid-maker-jp/`。由于页面使用外部依赖，需要联网加载。

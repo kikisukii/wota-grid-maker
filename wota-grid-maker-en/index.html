@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CLWYFMN7G"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2CLWYFMN7G');
+    </script>
+    
+    <title>My Idol Fan Journey</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../shared/languages.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="language-nav" aria-label="Language"><a href="../wota-grid-maker/" lang="zh-CN">中文</a> <a href="../wota-grid-maker-jp/" lang="ja">日本語</a> <a href="../wota-grid-maker-en/" lang="en" aria-current="page">English</a></nav>
+
+    <div class="content-scroll-wrapper">
+        <div id="capture-area">
+            <h1>My Idol Fan Journey</h1>
+            <div class="canvas-spacer"></div>
+            <div id="grid-container" class="grid">
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">My first favorite</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">My current favorite</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">The first idol I knew</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">My longest-time favorite</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">The one I spent most on</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">Love at first sight</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">So glad I became a fan</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">My biggest inspiration</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">My favorite pairing</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">The one I can’t get over</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">A former favorite</div></div>
+                <div class="grid-cell"><div class="image-container"><img class="cell-image" src=""></div><div class="text-container">My favorite group</div></div>
+            </div>
+            <div class="credit-footer" id="credit-footer-for-image">
+                kikisukii.github.io/wota-grid-maker-en · Kiki · Non-commercial use only
+            </div>
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <button id="clear-storage-btn">Clear all images</button>
+        <button id="export-btn">Download my grid</button>
+    </div>
+
+    <footer class="page-footer">
+        <p><strong>Credits</strong><br>
+            Inspired by idol fan grids shared online. Thank you to the original template creators.<br>
+            Website by Kiki. Sharing the love for Hello! Project and Airi Suzuki!<br>
+            Original coding assistance: Google Gemini | Hosted on <a href="https://github.com/kikisukii/wota-grid-maker" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </p>
+        <p><strong>Using this tool</strong><br>
+            This personal project is for fans to create and share grids for non-commercial use.
+            Use images you have permission to share and respect copyright, image rights and privacy.
+            You are responsible for the content you create and share. Illegal content is prohibited.
+        </p>
+        <p><strong>Your images</strong><br>
+            Images are processed and saved in your browser. This app does not upload your images to a server.
+            The page loads libraries from external CDNs and uses Google Analytics.
+        </p>
+    </footer>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Choose and crop an image</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="file-input-wrapper">
+                <input type="file" id="image-input" accept="image/*">
+                <button id="use-last-image-btn" style="display: none;">Reuse last cropped image</button>
+            </div>
+            <div class="cropper-container"><img id="image-to-crop"></div>
+            <button id="crop-btn">Use this crop</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="../shared/script.js"></script>
+</body>
+</html>

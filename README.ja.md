@@ -1,10 +1,10 @@
 # Wota Grid Maker — アイドルオタク履歴書
 
-[中文](README.md) | **日本語**
+[中文](README.md) | **日本語** | [English](README.en.md)
 
-好きなアイドルの画像を12マスに並べて、自分だけの「アイドルオタク履歴書」を作れるブラウザツールです。中国語版と日本語版を、このリポジトリでまとめて管理しています。
+好きなアイドルの画像を12マスに並べて、自分だけの「アイドルオタク履歴書」を作れるブラウザツールです。中国語版・日本語版・英語版を、このリポジトリでまとめて管理しています。
 
-**使ってみる：[日本語版](https://kikisukii.github.io/wota-grid-maker-jp/) · [中文版](https://kikisukii.github.io/wota-grid-maker/)**
+**使ってみる：[日本語版](https://kikisukii.github.io/wota-grid-maker-jp/) · [中文版](https://kikisukii.github.io/wota-grid-maker/) · [English](https://kikisukii.github.io/wota-grid-maker-en/)**
 
 ## 主な機能
 
@@ -32,7 +32,7 @@
 
 画像の保存先は、現在の端末・ブラウザのローカルストレージです。ブラウザのデータ削除、プライベートブラウズや容量制限などにより、保存した画像が失われる場合があります。残しておきたい作品はPNGとしてダウンロードしてください。
 
-従来どおり、中国語版と日本語版は同じ保存領域を使用します。一方で画像を変更・リセットすると、もう一方を次に開いたときにも反映されます。
+従来どおり、中国語版・日本語版・英語版は同じ保存領域を使用します。一方で画像を変更・リセットすると、ほかの言語版を次に開いたときにも反映されます。
 
 ## 開発と公開
 
@@ -40,9 +40,10 @@ HTML・CSS・JavaScriptで構成された静的サイトです。ビルドやAPI
 
 - `wota-grid-maker/`：中国語版のHTML・CSS。
 - `wota-grid-maker-jp/`：日本語版のHTML・CSS。
-- `shared/script.js`：共通処理と中国語・日本語のメッセージ。
+- `wota-grid-maker-en/`：英語版のHTML・CSS。
+- `shared/script.js`：共通処理と中国語・日本語・英語のメッセージ。
 - `assets/`：両バージョンの作成例。
-- `README.md` / `README.ja.md`：中国語 / 日本語の説明。
+- `README.md` / `README.ja.md` / `README.en.md`：中国語 / 日本語 / 英語の説明。
 - ルートの`index.html`：言語選択ページ。
 
 ローカルでは、リポジトリのルートを静的HTTPサーバーで配信し、`/wota-grid-maker/`または`/wota-grid-maker-jp/`を開いてください。外部ライブラリを読み込むため、インターネット接続が必要です。
