@@ -24,6 +24,12 @@ Make a 12-image grid of your idol fan journey: your first favorite, your current
 
 Use the language links above the grid to switch versions. These links stay outside the exported image.
 
+## Example
+
+A finished grid made with the Japanese version:
+
+![Example idol fan grid made with the Japanese version](assets/example-ja.png)
+
 ## Your images and saved progress
 
 Images are read, cropped and exported in your browser. Cropped images are compressed to JPEG and stored in local storage on your current device and browser. All three language versions share the same saved grid: changing or clearing it in one version also affects the others when you open them.
